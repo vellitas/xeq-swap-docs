@@ -1,6 +1,6 @@
 # Equilibria (XEQ) Token Swap
 ## Burn Addresses — Community Verification Guide
-**Version 1.2 | Genesis 2026**
+**Version 1.3 | Genesis 2026**
 
 ---
 
@@ -10,17 +10,17 @@ During the XEQ token swap, legacy XEQ coins are permanently removed from circula
 
 Each burn address was derived deterministically from a publicly known string. Any community member can independently reproduce the derivation and confirm the address is genuine.
 
-Two burn addresses exist — one for testnet and one for mainnet. They were derived from different burn strings so they are completely independent.
+Two burn addresses exist — a Community Test Burn Address and the primary Mainnet Burn Address. They were derived from different burn strings so they are completely independent.
 
 ---
 
-## 2. Testnet Burn Address
+## 2. Community Test Burn Address
 
 | Field | Value |
 |-------|-------|
 | **Address** | `Tw1d8ASYJnSdeZagFTAdu9R9N2pyXwoCGKZ2Gk6PB3UXSXRXG7ZoZKjaE4ANja6X4pTiFPitMFHcP4yR8Qqhz9Vq1NaNTqcTY` |
 | **View Key** | `dad3057b53441f6dd0d582f8c4935f0584ad56379bc58af68f26d577857cd80f` |
-| **Chain** | Legacy Equilibria (XEQ) — Testnet |
+| **Chain** | Legacy Equilibria (XEQ) — Mainnet |
 | **Spend Key** | **PROVABLY UNKNOWN — derived from public string only** |
 | **Burn String** | `Test Equilibria XEQ Token Swap Burn Address - Genesis 2026` |
 
@@ -51,13 +51,13 @@ Both burn addresses were generated using a fully deterministic, publicly auditab
 
 ## 5. Independently Verify the Derivation
 
-Anyone can reproduce steps 1–3 using standard Python. Replace the burn string with testnet or mainnet as appropriate:
+Anyone can reproduce steps 1–3 using standard Python. Replace the burn string with the community test or mainnet address as appropriate:
 ```python
 import hashlib
 
 # For mainnet:
 BURN_STRING = "Equilibria XEQ Token Swap Burn Address - Genesis 2026"
-# For testnet:
+# For community test burn address:
 # BURN_STRING = "Test Equilibria XEQ Token Swap Burn Address - Genesis 2026"
 
 l = 2**252 + 27742317777372353535851937790883648493
@@ -71,7 +71,7 @@ spend_key = sc_reduce32(seed)
 print('Spend key:', spend_key.hex())
 
 # Mainnet expected: 6d0b210f934aef307a1de2eb6620bc94989fe7005ada42b48938c6c8425ef400
-# Testnet expected: 0fe45729ece0e6c31fa8b118c263f4c2ce6bc04c33c1b958f0d53d1ca85d0602
+# Community test expected: 0fe45729ece0e6c31fa8b118c263f4c2ce6bc04c33c1b958f0d53d1ca85d0602
 ```
 
 To verify the full address using wallet-cli:
@@ -96,9 +96,9 @@ The spend keys were derived by hashing public strings. Because SHA256 is a one-w
 
 ## 7. Proof That Spending Fails — Live Test
 
-The testnet burn address was tested by sending 1 XEQ to it and then attempting to spend the funds using a view-only wallet loaded with the burn address view key.
+The Community Test Burn Address was tested by sending 1 XEQ to it and then attempting to spend the funds using a view-only wallet loaded with the burn address view key.
 
-**Test transaction (testnet):**
+**Test transaction (Community Test Burn Address):**
 
 | Field | Value |
 |-------|-------|
@@ -137,7 +137,7 @@ The view keys are published above. Any community member can use them to monitor 
 **Step 1 — Create a view-only wallet:**
 ```
 wallet-cli --generate-from-view-key /tmp/burn-monitor
-# Enter the address when prompted (testnet or mainnet from section 2 or 3)
+# Enter the address when prompted (community test or mainnet from section 2 or 3)
 # Enter the view key when prompted
 # Set restore-height to a recent block to speed up sync
 ```
@@ -158,4 +158,4 @@ transfer <any_address> 1
 
 ---
 
-*Equilibria Token Swap — Burn Address Verification Guide v1.2 | Genesis 2026*
+*Equilibria Token Swap — Burn Address Verification Guide v1.3 | Genesis 2026*
