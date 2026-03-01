@@ -14,7 +14,7 @@ Public documentation for the Equilibria (XEQ) token swap, published by the Equil
 
 | Document | Description |
 |----------|-------------|
-| [Swap Deposit Address Transparency Guide](xeq-burn-address-verification-v2.0.md) | Deposit addresses, published view keys, how to independently monitor all incoming deposits, and public API endpoints for community verification |
+| [Swap Deposit Address Transparency Guide](xeq-token-swap-verification-v2.0.md) | Deposit addresses, published view keys, how to independently monitor all incoming deposits, and public API endpoints for community verification |
 
 ## About
 
