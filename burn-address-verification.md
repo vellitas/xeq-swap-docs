@@ -1,161 +1,136 @@
 # Equilibria (XEQ) Token Swap
-## Burn Addresses — Community Verification Guide
-**Version 1.3 | Genesis 2026**
+## Swap Deposit Addresses — Community Transparency Guide
+**Version 2.0 | Genesis 2026**
 
 ---
 
-## 1. What Is a Burn Address?
+## 1. Overview
 
-During the XEQ token swap, legacy XEQ coins are permanently removed from circulation. To prove this, cryptographically verifiable burn addresses have been created. These addresses have no spendable private key — it is mathematically impossible for anyone to withdraw funds sent to them.
+During the XEQ token swap, legacy XEQ coins are sent to dedicated swap deposit addresses. These funds are monitored publicly via published view keys, providing full community transparency over all incoming deposits. The spend keys are held privately by the Equilibria team and will never be used.
 
-Each burn address was derived deterministically from a publicly known string. Any community member can independently reproduce the derivation and confirm the address is genuine.
-
-Two burn addresses exist — a Community Test Burn Address and the primary Mainnet Burn Address. They were derived from different burn strings so they are completely independent.
+The legacy Equilibria chain will be permanently shut down shortly after the swap window closes. After shutdown, the Equilibria GitHub will be locked — no further forks or client downloads will be possible. At that point, legacy XEQ has no network to transact on and the deposit address funds become permanently inaccessible in practice.
 
 ---
 
-## 2. Community Test Burn Address
+## 2. Deposit Addresses
+
+### 2.1 Mainnet Swap Deposit Address
 
 | Field | Value |
 |-------|-------|
-| **Address** | `Tw1d8ASYJnSdeZagFTAdu9R9N2pyXwoCGKZ2Gk6PB3UXSXRXG7ZoZKjaE4ANja6X4pTiFPitMFHcP4yR8Qqhz9Vq1NaNTqcTY` |
-| **View Key** | `dad3057b53441f6dd0d582f8c4935f0584ad56379bc58af68f26d577857cd80f` |
+| **Address** | `Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f` |
+| **View Key** | `aa93efff8f5b2869ec0adac28bdee9174b6e06ec02310d05e8686e46577b902a` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | **PROVABLY UNKNOWN — derived from public string only** |
-| **Burn String** | `Test Equilibria XEQ Token Swap Burn Address - Genesis 2026` |
+| **Spend Key** | **PRIVATE — held by Equilibria team, never published, never used** |
 
----
-
-## 3. Mainnet Burn Address
+### 2.2 Testnet Swap Deposit Address
 
 | Field | Value |
 |-------|-------|
-| **Address** | `TvzftzCWPdMFCvRCCv64sAbHG1mf6MW1e4yoAAbCtHWaJVesVtv8Z7q7SggscMKTdjMCNutoFotkAgb45eg66PmR314aZjXgD` |
-| **View Key** | `805eba3bff2b78e222ec26e00c63ca2b717017e86714d42f924b9aff6714ab06` |
+| **Address** | `Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f` |
+| **View Key** | `401864dba58496aa77df2aaabd833e5d2848f3aba7126098b5d2ca7a40a4d1e9` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | **PROVABLY UNKNOWN — derived from public string only** |
-| **Burn String** | `Equilibria XEQ Token Swap Burn Address - Genesis 2026` |
+| **Spend Key** | **PRIVATE — held by Equilibria team, never published, never used** |
 
 ---
 
-## 4. How the Addresses Were Derived
+## 3. Transparency Guarantees
 
-Both burn addresses were generated using a fully deterministic, publicly auditable process. No random number generator was used. Each private spend key was derived entirely from its corresponding public burn string using these steps:
+The following guarantees are provided to the community:
 
-1. Take the SHA256 hash of the burn string (UTF-8 encoded).
-2. Reduce the resulting 32 bytes modulo the ed25519 curve order (`l`) to produce the private spend key.
-3. Derive the private view key as: `Keccak256(spend_key) mod l`.
-4. Derive the public keys and final address using standard Monero/Equilibria ed25519 point multiplication.
+- **Full deposit visibility** — the view keys are published above. Any community member can create a view-only wallet and monitor every incoming transaction in real time with zero spending capability.
 
----
+- **Public dashboard** — all deposits are visible on the XEQ Swap Tracker Dashboard at [https://swap-tracker.xeqlabs.com/](https://swap-tracker.xeqlabs.com/) via API endpoints that query the deposit wallet directly.
 
-## 5. Independently Verify the Derivation
+- **Chain shutdown** — the legacy Equilibria chain will be permanently shut down shortly after the swap window closes. After this point, no transactions can be made on the legacy chain regardless of who holds any spend key.
 
-Anyone can reproduce steps 1–3 using standard Python. Replace the burn string with the community test or mainnet address as appropriate:
-```python
-import hashlib
-
-# For mainnet:
-BURN_STRING = "Equilibria XEQ Token Swap Burn Address - Genesis 2026"
-# For community test burn address:
-# BURN_STRING = "Test Equilibria XEQ Token Swap Burn Address - Genesis 2026"
-
-l = 2**252 + 27742317777372353535851937790883648493
-
-def sc_reduce32(x):
-    n = int.from_bytes(x, 'little') % l
-    return n.to_bytes(32, 'little')
-
-seed = hashlib.sha256(BURN_STRING.encode('utf-8')).digest()
-spend_key = sc_reduce32(seed)
-print('Spend key:', spend_key.hex())
-
-# Mainnet expected: 6d0b210f934aef307a1de2eb6620bc94989fe7005ada42b48938c6c8425ef400
-# Community test expected: 0fe45729ece0e6c31fa8b118c263f4c2ce6bc04c33c1b958f0d53d1ca85d0602
-```
-
-To verify the full address using wallet-cli:
-```
-wallet-cli --generate-from-spend-key /tmp/verify-burn
-# Enter the spend key when prompted
-# Confirm the generated address matches the table in section 2 or 3
-```
+- **GitHub lock** — the Equilibria GitHub repository will be locked after shutdown. No further forks or client downloads will be possible, preventing anyone from creating a competing legacy chain.
 
 ---
 
-## 6. Why No Spending Is Possible
+## 4. How to Monitor Deposits (Community Verification)
 
-The spend keys were derived by hashing public strings. Because SHA256 is a one-way function:
+Any community member can independently verify all deposits using the published view key. No trust in the Equilibria team is required to monitor incoming transactions.
 
-- No private key was generated randomly and then hidden.
-- Each spend key is fully determined by its public burn string — there is no secret.
-- The Equilibria team has no special access to these addresses — the keys are as public as the burn strings themselves.
-- Any community member can verify the derivation independently without trusting the Equilibria team.
+### 4.1 Create a View-Only Wallet
 
----
+To speed up sync, use `--restore-height` when creating your wallet. Check the current legacy chain height at [https://swap-tracker.xeqlabs.com/](https://swap-tracker.xeqlabs.com/) before running this command. Use the swap start height to ensure you capture all deposits from the beginning of the swap window.
 
-## 7. Proof That Spending Fails — Live Test
-
-The Community Test Burn Address was tested by sending 1 XEQ to it and then attempting to spend the funds using a view-only wallet loaded with the burn address view key.
-
-**Test transaction (Community Test Burn Address):**
-
-| Field | Value |
-|-------|-------|
-| **txid** | `0362dd3d8f689fa916c76233c4cde8471137f5d9a4d69253aeb17ff7b9e655a7` |
-| **amount** | 10000 atomic units (1 XEQ) |
-| **height** | 1770383 |
-| **confirmations** | 57 |
-
-**Viewing the transaction succeeded** — the view-only wallet correctly reported the incoming transaction, confirming the view key works for monitoring.
-
-**Spending the transaction failed** — when a `transfer` RPC call was made against the view-only wallet, it returned an `unsigned_txset` blob with an empty `tx_key`:
-```json
-{
-  "result": {
-    "tx_hash": "643d7e76cd819c45a00d2fb767310bbc9ed40a83c0382bd3086b4f6eef6d39d8",
-    "tx_key": "",
-    "tx_blob": "",
-    "unsigned_txset": "4d6f6e65726f20756e7369676e65642074782073657404..."
-  }
-}
-```
-
-The critical fields:
-- **`tx_key: ""`** — empty, meaning the transaction was never signed
-- **`tx_blob: ""`** — empty, meaning nothing was broadcast to the network
-- **`unsigned_txset`** — a blob that requires the spend key to sign, which no one possesses
-
-The transaction hash shown (`643d7e76...`) is a local placeholder only — it was never submitted to the network and does not exist on chain. The 1 XEQ sent to the burn address is permanently unspendable.
-
----
-
-## 8. Monitoring the Burn Addresses
-
-The view keys are published above. Any community member can use them to monitor incoming transactions in read-only mode, with zero spending capability. This provides full public transparency over all legacy XEQ sent to the burn addresses.
-
-**Step 1 — Create a view-only wallet:**
-```
-wallet-cli --generate-from-view-key /tmp/burn-monitor
-# Enter the address when prompted (community test or mainnet from section 2 or 3)
+```bash
+wallet-cli --generate-from-view-key /tmp/xeq-swap-monitor \
+  --restore-height <swap_start_height>
+# Enter the deposit address when prompted (section 2.1 or 2.2)
 # Enter the view key when prompted
-# Set restore-height to a recent block to speed up sync
 ```
 
-**Step 2 — Sync and view incoming transactions:**
+### 4.2 Sync and View Incoming Transactions
+
 ```
 # Inside wallet-cli after syncing:
 refresh
 show_transfers in
 ```
 
-**Step 3 — Attempt a transfer to confirm it cannot be spent:**
+### 4.3 Via the Public Dashboard API
+
+All deposit data is available via public API endpoints. No API key required.
+
+```bash
+# Summary — total deposited, deposit count, sync status
+curl -s https://swap.xeqlabs.com/api/public/burn | python3 -m json.tool
+
+# Full transfer list
+curl -s https://swap.xeqlabs.com/api/public/burn/transfers | python3 -m json.tool
 ```
-# Inside wallet-cli:
-transfer <any_address> 1
-# Result: returns unsigned_txset with empty tx_key — never broadcasts
-```
+
+**Summary response fields:**
+
+| Field | Description |
+|-------|-------------|
+| `total_burned_xeq` | Total XEQ deposited (in XEQ, not atomic units) |
+| `deposit_count` | Number of individual deposit transactions |
+| `wallet_sync_height` | Current height of the deposit wallet |
+| `chain_height` | Current legacy chain height |
+| `synced` | Whether wallet is fully synced |
+| `as_of` | Timestamp of the response |
+
+**Transfer list response fields:**
+
+| Field | Description |
+|-------|-------------|
+| `txid` | Transaction ID on the legacy chain |
+| `amount_xeq` | Amount deposited in XEQ |
+| `height` | Block height of the deposit |
+| `timestamp` | Unix timestamp of the deposit |
+| `confirmations` | Number of confirmations |
 
 ---
 
-*Equilibria Token Swap — Burn Address Verification Guide v1.3 | Genesis 2026*
+## 5. What Happens to the Funds
+
+All legacy XEQ deposited to the swap address is counted toward the total supply verified for the new chain genesis mint. The verified total is published as a SHA256-signed ledger before the genesis mint occurs. After the swap window closes:
+
+- The swap ledger is finalized and published with a SHA256 hash for community verification.
+- A single genesis mint on the new Equilibria chain issues new XEQ equivalent to the verified swap total.
+- Payouts are sent to recipients' new chain wallet addresses.
+- The legacy chain is shut down shortly after the swap window closes.
+- The Equilibria GitHub is locked — no forks or downloads after this point.
+
+Once the legacy chain is shut down, the deposit address funds are permanently inaccessible. No transaction can be broadcast on a network that no longer exists.
+
+---
+
+## 6. Why No Cryptographic Burn Address
+
+True cryptographically unspendable addresses (such as Bitcoin's `OP_RETURN` outputs) do not exist on Monero-fork chains including Equilibria. The transparency model for this swap relies instead on:
+
+1. **Published view keys** — full public visibility of all deposits
+2. **Public API** — real-time deposit data available to anyone
+3. **Chain shutdown** — legacy network permanently closed shortly after the swap window
+4. **GitHub lock** — no ability to fork or continue the legacy chain after shutdown
+
+These measures together ensure that deposited legacy XEQ cannot be meaningfully accessed after the swap is complete.
+
+---
+
+*Equilibria Token Swap — Swap Deposit Address Transparency Guide v2.0 | Genesis 2026*
