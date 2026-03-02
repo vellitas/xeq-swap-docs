@@ -1,4 +1,4 @@
-# XEQ Testnet Swap — Ledger Verification
+ # XEQ Testnet Swap — Ledger Verification
 
 ## Why This Matters
 
@@ -54,7 +54,6 @@ If it does not match — do not proceed. Contact the Equilibria team immediately
 
 ### Step 4 — Verify via the public API
 The hash is also permanently stored on the swap server and accessible to anyone:
-
 ```bash
 curl -s https://swap-testnet.xeqlabs.com/api/public/ledger | python3 -m json.tool
 ```
@@ -99,7 +98,7 @@ Tab-separated values with the following columns:
 | `txid` | Your legacy chain transaction ID |
 | `height` | Block height when your deposit was confirmed |
 | `timestamp` | Unix timestamp of your deposit |
-| `amount_atomic` | Legacy XEQ you deposited (divide by 1,000,000,000 for XEQ) |
+| `amount_atomic` | Legacy XEQ you deposited (divide by 10,000 for XEQ) |
 | `new_address` | Your new chain wallet address |
 | `new_amount_atomic` | New XEQ you will receive (divide by 1,000,000,000 for XEQ) |
 | `new_txid` | New chain payout transaction ID (populated after payout) |
@@ -112,9 +111,9 @@ Tab-separated values with the following columns:
 | Field | Value |
 |-------|-------|
 | Total Verified Swaps | 114 |
-| Legacy XEQ Deposited | 16,884,936 atomic units (16.884936 XEQ) |
+| Legacy XEQ Deposited | 16,884,936 atomic units (1,688.4936 XEQ) |
 | New XEQ to be Minted | 1,688,493,600,000 atomic units (1,688.4936 new XEQ) |
-| Swap Ratio | 1 legacy XEQ = 100 new XEQ |
+| Swap Ratio | 1 legacy XEQ = 1 new XEQ |
 | Finalized | 2026-03-01 |
 | Environment | Testnet |
 
