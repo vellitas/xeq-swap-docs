@@ -21,16 +21,25 @@ The legacy Equilibria chain will be permanently shut down shortly after the swap
 | **Address** | `Tw1AmWavnFtPT4rgfwt7seYHsLW1vPE7wR8s5BBtu7NZCK31H9jWy6r7m4iZ8APaLDfzGvrgqU9fW3BLjKKiHBw82EntBGmLn` |
 | **View Key** | `d1c95300b1e473d0a4ac6a81adbc42a5fe432de54b5e71c72fae73e668d88701` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | **PRIVATE — held by Equilibria team, never published, never used** |
+| **Spend Key** | **PRIVATE — Will be published at the end of the swap** |
 
-### 2.2 Testnet Swap Deposit Address
+### 2.2 Final Testnet Swap Deposit Address
+
+| Field | Value |
+|-------|-------|
+| **Address** | `TvzqHiqSv5QUrxAc4gtaiwHmUB45PnvzJG4Xtg8jfrsr6qiBUa8zUPuZyBjbq6gjhXB18P4qwxEMgSFeZ8RNF7RN2CQEmkn97` |
+| **View Key** | `25edced9642c5e17e85d0eb55b1854d6c1514f491045da2c3fb77bcf88e03d07` |
+| **Chain** | Legacy Equilibria (XEQ) — Mainnet |
+| **Spend Key** | **PRIVATE — Will be published at the end of the swap** |
+
+### 2.2 First Testnet Swap Deposit Address
 
 | Field | Value |
 |-------|-------|
 | **Address** | `Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f` |
 | **View Key** | `567e1326f061ae75a61a1d2ec69523f95465a6fb7b7cd4b3f871c72d8fb8a605` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | **PRIVATE — held by Equilibria team, never published, never used** |
+| **Spend Key** | **PRIVATE — Will be published at the end of the swap** |
 
 ---
 
