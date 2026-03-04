@@ -18,8 +18,8 @@ The legacy Equilibria chain will be permanently shut down shortly after the swap
 
 | Field | Value |
 |-------|-------|
-| **Address** | `Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f` |
-| **View Key** | `aa93efff8f5b2869ec0adac28bdee9174b6e06ec02310d05e8686e46577b902a` |
+| **Address** | `TBD` |
+| **View Key** | `TBD` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
 | **Spend Key** | **PRIVATE — held by Equilibria team, never published, never used** |
 
@@ -28,7 +28,7 @@ The legacy Equilibria chain will be permanently shut down shortly after the swap
 | Field | Value |
 |-------|-------|
 | **Address** | `Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f` |
-| **View Key** | `401864dba58496aa77df2aaabd833e5d2848f3aba7126098b5d2ca7a40a4d1e9` |
+| **View Key** | `567e1326f061ae75a61a1d2ec69523f95465a6fb7b7cd4b3f871c72d8fb8a605` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
 | **Spend Key** | **PRIVATE — held by Equilibria team, never published, never used** |
 
