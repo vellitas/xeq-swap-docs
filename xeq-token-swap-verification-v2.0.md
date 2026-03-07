@@ -39,7 +39,7 @@ The legacy Equilibria chain will be permanently shut down shortly after the swap
 | **Address** | `Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f` |
 | **View Key** | `567e1326f061ae75a61a1d2ec69523f95465a6fb7b7cd4b3f871c72d8fb8a605` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | **PRIVATE — Will be published at the end of the swap** |
+| **Spend Key** | `ea626efd9676b4eaeaa419f4a2252a3b25bd8f44964975654bb4a2ca8f17ff09` |
 
 ---
 
