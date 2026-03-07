@@ -30,7 +30,7 @@ The legacy Equilibria chain will be permanently shut down shortly after the swap
 | **Address** | `TvzqHiqSv5QUrxAc4gtaiwHmUB45PnvzJG4Xtg8jfrsr6qiBUa8zUPuZyBjbq6gjhXB18P4qwxEMgSFeZ8RNF7RN2CQEmkn97` |
 | **View Key** | `25edced9642c5e17e85d0eb55b1854d6c1514f491045da2c3fb77bcf88e03d07` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | '9fc8bbf8cf884c18c37f33dd590e9b78076e969c00d9793828ffd5c0731b6408' |
+| **Spend Key** | `9fc8bbf8cf884c18c37f33dd590e9b78076e969c00d9793828ffd5c0731b6408` |
 
 ### 2.2 First Testnet Swap Deposit Address
 
