@@ -1,8 +1,8 @@
-# XEQ Testnet Swap — Round 1 Ledger Verification
+# XEQ Testnet Swap — Round 2 Ledger Verification
 
 ## Why This Matters
 
-The ledger file is the **single source of truth** for the Round 1 testnet swap. It contains every verified swap — the legacy XEQ deposited, the new wallet address, and the exact amount paid out on the new chain.
+The ledger file is the **single source of truth** for the Round 2 testnet swap. It contains every verified swap — the legacy XEQ deposited, the new wallet address, and the exact amount paid out on the new chain.
 
 The SHA256 hash is a cryptographic fingerprint of this file. If even a single character were changed — a recipient address, an amount, a single digit — the hash would be completely different. This means:
 
@@ -28,7 +28,7 @@ The SHA256 hash is a cryptographic fingerprint of this file. If even a single ch
 ## Published SHA256
 
 ```
-4697817ff88f80bef8340e42d03619a8cd675baa51a0e89f36bb5442f0bfa2eb
+b04ad9a9cfd958d8261eb8e6c996bd11db0080af0302525e7362687844efe3ac
 ```
 
 ## Ledger File
@@ -57,7 +57,7 @@ Get-FileHash xeq-testnet-swap-ledger.tsv -Algorithm SHA256
 ### Step 3 — Compare character by character
 The output must be **exactly**:
 ```
-4697817ff88f80bef8340e42d03619a8cd675baa51a0e89f36bb5442f0bfa2eb
+b04ad9a9cfd958d8261eb8e6c996bd11db0080af0302525e7362687844efe3ac
 ```
 
 If it matches — the ledger is authentic and unmodified.
@@ -107,12 +107,12 @@ Select-String -Path xeq-testnet-swap-ledger.tsv -Pattern "<your_legacy_txid>"
 
 | Field | Value |
 |-------|-------|
-| Total Verified Swaps | 114 |
-| Legacy XEQ Deposited | 16,884,936 atomic units (1,688.4936 XEQ) |
-| New XEQ Paid Out | 1,688,493,600,000 atomic units (1,688.4936 new XEQ) |
+| Total Verified Swaps | 64 |
+| Legacy XEQ Deposited | 6,450,720 atomic units (645.072 XEQ) |
+| New XEQ Paid Out | 645,072,000,000 atomic units (645.072 new XEQ) |
 | Swap Ratio | 1:1 confirmed |
-| Finalized | 2026-03-01 |
-| Environment | Testnet (Round 1) |
+| Finalized | 2026-03-07 |
+| Environment | Testnet (Round 2 — Final) |
 
 ---
 
@@ -123,16 +123,16 @@ This was a donation-based testnet participation swap. Participants were informed
 - Only send an amount you are comfortable donating
 - Mainnet XEQ sent will not be returned
 
-All legacy XEQ deposited during Round 1 has been swept to the **Community Engagement Wallet** and will be used for engagement initiatives, ecosystem growth campaigns, and community contests.
+All legacy XEQ deposited during Round 2 has been swept to the **Community Engagement Wallet** and will be used for engagement initiatives, ecosystem growth campaigns, and community contests.
 
 **Deposit Wallet Address:**
-`Tw1TCBUSPjMCePC3unP98V8FuwRTY6cJq7kwbKWCYZNgf9vG4mQ1KbRSCeaUDPSTycBS1TcWi31nZHA7DvGKka7m2oXmFnb7f`
+`TvzqHiqSv5QUrxAc4gtaiwHmUB45PnvzJG4Xtg8jfrsr6qiBUa8zUPuZyBjbq6gjhXB18P4qwxEMgSFeZ8RNF7RN2CQEmkn97`
 
 **Community Engagement Wallet:**
 `Tw1NGFkVncSUtoi7GEw5xpAfk3Z3mh2EBTLNJnvego3EgU4VoSK2apyJaJPBgEV9p39iHpEb6xsj3SaU2NZDM67U2x3HS3qZn`
 
-The deposit wallet spend key has been published and PGP signed — see `xeq-testnet-round1-deposit-spendkey-release.txt.asc` in this directory. Any community member can open the deposit wallet and verify the complete transaction history independently.
+The deposit wallet spend key has been published and PGP signed — see `xeq-testnet-deposit-spendkey-release.txt.asc` in this directory. Any community member can open the deposit wallet and verify the complete transaction history independently.
 
 ---
 
-*Equilibria Token Swap — Testnet Round 1 Ledger Verification v1.0 | 2026-03-01*
+*Equilibria Token Swap — Testnet Round 2 Ledger Verification v1.0 | 2026-03-07*
