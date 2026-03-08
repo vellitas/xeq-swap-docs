@@ -1,6 +1,6 @@
 # Equilibria (XEQ) Token Swap
 ## Community Transparency Guide
-**Version 3.0 | Genesis 2026**
+**Version 3.1 | Genesis 2026**
 
 ---
 
@@ -27,7 +27,22 @@ The view key is published here and at swap window open. Any community member can
 
 ---
 
-## 3. Transparency Guarantees
+## 3. Genesis Wallet
+
+The genesis wallet receives the single mint transaction that creates all new XEQ equivalent to the verified swap total. It was created on an air-gapped machine and the spend key has never touched an internet-connected device.
+
+| Field | Value |
+|-------|-------|
+| **Address** | `XEQMCkEATxY2RKfr16ecv7Z6QnEtiQ7wdPyBKYc3fNBs6eH2uxCm3Mh1Uauw9iV4uVggHi6i8g7wXgUXHCZXLW3f8Q83szFhHr` |
+| **View Key** | `8d6e731705e78ac4efdb0f2b40ff40414317ddd25529c65276959836137a2104` |
+| **Chain** | New Equilibria (XEQ) — Mainnet |
+| **Spend Key** | Will be published within 72 hours of genesis mint confirmation — PGP signed to `vellitas/xeq-swap-docs` |
+
+The view key is published above and in `mainnet/xeq-mainnet-genesis-viewkey-release.txt.asc`. Any community member can create a view-only wallet and watch the genesis mint arrive in real time.
+
+---
+
+## 4. Transparency Guarantees
 
 - **Full deposit visibility** — the view key is published above. Any community member can monitor every incoming transaction with zero spending capability.
 
@@ -35,7 +50,7 @@ The view key is published here and at swap window open. Any community member can
 
 - **Finalized ledger** — the swap ledger is locked with a SHA256 hash before any payouts are sent. The hash is published to this repository and permanently recorded on the public API. Payouts match the ledger exactly.
 
-- **Spend key releases** — after the swap is complete, the private spend keys for the deposit wallet and distribution wallet are published here, PGP signed by the XEQLabs team. Anyone can open either wallet and verify the complete transaction history independently.
+- **Spend key releases** — after the swap is complete, the private spend keys for the deposit wallet, genesis wallet, and distribution wallet are published here, PGP signed by the XEQLabs team. Anyone can open any wallet and verify the complete transaction history independently.
 
 - **Chain shutdown** — the legacy Equilibria chain will be permanently shut down shortly after the swap window closes. After this point, no transactions can be made on the legacy chain regardless of who holds any spend key.
 
@@ -43,11 +58,11 @@ The view key is published here and at swap window open. Any community member can
 
 ---
 
-## 4. How to Monitor Deposits
+## 5. How to Monitor Deposits
 
 Any community member can independently verify all deposits using the published view key. No trust in the Equilibria team is required.
 
-### 4.1 Create a View-Only Wallet
+### 5.1 Create a View-Only Wallet
 
 ```bash
 wallet-cli --generate-from-view-key /tmp/xeq-swap-monitor \
@@ -58,7 +73,7 @@ wallet-cli --generate-from-view-key /tmp/xeq-swap-monitor \
 
 Use the swap opening block height as `--restore-height` to capture all deposits from the start of the swap window. The current legacy chain height is visible at [https://swap-tracker.xeqlabs.com/](https://swap-tracker.xeqlabs.com/).
 
-### 4.2 Sync and View Incoming Transactions
+### 5.2 Sync and View Incoming Transactions
 
 ```
 # Inside wallet-cli after syncing:
@@ -66,48 +81,49 @@ refresh
 show_transfers in
 ```
 
-### 4.3 Via the Public API
+### 5.3 Via the Public API
 
 ```bash
 # Summary — total deposited, deposit count, sync status
-curl -s https://swap.xeqlabs.com/api/public/burn | python3 -m json.tool
+curl -s https://swap.xeqlabs.com/api/public | python3 -m json.tool
 
-# Full transfer list
-curl -s https://swap.xeqlabs.com/api/public/burn/transfers | python3 -m json.tool
+# Finalized ledger hash
+curl -s https://swap.xeqlabs.com/api/public/ledger | python3 -m json.tool
 ```
 
 ---
 
-## 5. Spend Key Release Schedule
+## 6. Spend Key Release Schedule
 
 After the swap is complete the following keys will be published to this repository as PGP signed statements:
 
 | Wallet | Released | Condition |
 |--------|----------|-----------|
 | Deposit wallet | Within 72 hours | After sweep to community engagement wallet confirmed |
+| Genesis wallet | Within 72 hours | After genesis mint confirmed on-chain |
 | Distribution wallet | Within 24 hours | After last payout confirmed |
 
 All releases are signed with the XEQLabs PGP key — see `pgp/xeqlabs-pgp-public-key.asc` in this repository.
 
 ---
 
-## 6. What Happens to the Funds
+## 7. What Happens to the Funds
 
 All legacy XEQ deposited to the swap address is counted toward the total supply verified for the new chain genesis mint.
 
 1. Swap window closes
 2. Ledger finalized — SHA256 hash locked and published
 3. Community verification period
-4. Genesis mint on new chain — exact verified total
-5. Payouts sent to all verified recipients
+4. Genesis mint on new chain — exact verified total sent to genesis wallet
+5. Payouts sent from distribution wallet to all verified recipients
 6. Deposit wallet swept to community engagement wallet
-7. Spend keys published — full independent verification possible
+7. Spend keys published — full independent verification possible by anyone
 8. Legacy chain shut down
 9. Equilibria GitHub locked
 
 ---
 
-## 7. Why No Cryptographic Burn Address
+## 8. Why No Cryptographic Burn Address
 
 True cryptographically unspendable addresses (such as Bitcoin's `OP_RETURN` outputs) do not exist on Monero-fork chains including Equilibria. The transparency model for this swap relies instead on:
 
@@ -119,7 +135,7 @@ True cryptographically unspendable addresses (such as Bitcoin's `OP_RETURN` outp
 
 ---
 
-## 8. Testnet Swap Records
+## 9. Testnet Swap Records
 
 The testnet swap was conducted in two rounds prior to the mainnet swap. Full ledger verification documents, TSV ledger files, and PGP signed spend key releases for both rounds are available in the `testnet/` directory of this repository.
 
@@ -130,4 +146,4 @@ The testnet swap was conducted in two rounds prior to the mainnet swap. Full led
 
 ---
 
-*Equilibria Token Swap — Community Transparency Guide v3.0 | Genesis 2026*
+*Equilibria Token Swap — Community Transparency Guide v3.1 | Genesis 2026*
