@@ -33,25 +33,25 @@ b04ad9a9cfd958d8261eb8e6c996bd11db0080af0302525e7362687844efe3ac
 
 ## Ledger File
 
-[xeq-testnet-swap-ledger.tsv](xeq-testnet-swap-ledger.tsv)
+[xeq-testnet-swap-ledger-round-2.tsv](xeq-testnet-swap-ledger-round-2.tsv)
 
 ---
 
 ## Step-by-Step Verification
 
 ### Step 1 — Download the ledger file
-Click `xeq-testnet-swap-ledger.tsv` above and download it to your computer.
+Click `xeq-testnet-swap-ledger-round-2.tsv` above and download it to your computer.
 
 ### Step 2 — Compute the SHA256 hash
 
 **Linux / Mac:**
 ```bash
-sha256sum xeq-testnet-swap-ledger.tsv
+sha256sum xeq-testnet-swap-ledger-round-2.tsv
 ```
 
 **Windows (PowerShell):**
 ```powershell
-Get-FileHash xeq-testnet-swap-ledger.tsv -Algorithm SHA256
+Get-FileHash xeq-testnet-swap-ledger-round-2.tsv -Algorithm SHA256
 ```
 
 ### Step 3 — Compare character by character
@@ -78,12 +78,12 @@ The `ledger_sha256` field must match the published hash above.
 
 **Linux / Mac:**
 ```bash
-grep <your_legacy_txid> xeq-testnet-swap-ledger.tsv
+grep <your_legacy_txid> xeq-testnet-swap-ledger-round-2.tsv
 ```
 
 **Windows (PowerShell):**
 ```powershell
-Select-String -Path xeq-testnet-swap-ledger.tsv -Pattern "<your_legacy_txid>"
+Select-String -Path xeq-testnet-swap-ledger-round-2.tsv -Pattern "<your_legacy_txid>"
 ```
 
 ---
