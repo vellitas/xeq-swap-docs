@@ -8,7 +8,7 @@
 | SHA256 | d0df0ff0cbc134be142486cb9e93fef65b8f47ae8cdba52cb7b7a164d5782652 |
 | Legacy total (atomic) | 2767649903247 |
 | New total (atomic) | 276764990324700000 |
-| Finalized | April 2026 |
+| Finalized | April 16, 2026 |
 
 ## Verification
 
