@@ -51,7 +51,7 @@ Using the recomended new GUI wallet or the legacy wallet CLI, use `get_tx_proof`
 
 Enter:
 - Your legacy XEQ Transaction ID (TXID)
-- Your new chain wallet address (starts with **XEQ** on mainnet)
+- Your new chain wallet address (starts with **XEQM** on mainnet)
 - Your transaction proof
 
 ### 6. Watch Your Swap Status
@@ -73,7 +73,7 @@ A successful swap status is **Verified**. Here is what to do for other statuses:
 ## What Happens After the Window Closes
 
 - The swap ledger is finalized with a SHA256 hash and published for community verification
-- New XEQ is minted to match the exact verified total — no more, no less
+- New XEQM is minted to match the exact verified total plus estimated transactions fees — no more, no less
 - Payouts are sent to all verified recipients on the new chain
 - The full process and all wallet keys are published to the community transparency repository at github.com/vellitas/xeq-swap-docs
 
