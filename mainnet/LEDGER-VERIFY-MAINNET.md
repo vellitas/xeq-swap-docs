@@ -4,10 +4,10 @@
 |---|---|
 | Network | Mainnet |
 | Swap window close block | 1,806,294 |
-| Records | 1,373 |
-| SHA256 (canonical unredacted ledger) | d0df0ff0cbc134be142486cb9e93fef65b8f47ae8cdba52cb7b7a164d5782652 |
-| Legacy total (atomic) | 2767649903247 |
-| New total (atomic) | 276764990324700000 |
+| Records | 1,374 |
+| SHA256 (canonical unredacted ledger) | 042b8be05b1c7af6ea9a0ffab7273e5623d0b7ad8d5a3fd01bb8aab1c3a77087 |
+| Legacy total (atomic) | 2767865413247 |
+| New total (atomic) | 276786541324700000 |
 | Finalized | April 2026 |
 
 ## Public ledger
@@ -27,6 +27,16 @@ verification of their own swap record by txid.
 ## Verification
 
 ```bash
-# Sum of all new_amount_atomic values in the public ledger should equal 276764990324700000
+# Sum of all new_amount_atomic values in the public ledger should equal 276786541324700000
 awk -F'\t' 'NR>1 {sum += $6} END {print sum}' ledger-public.tsv
 ```
+
+## Revision note
+
+The initial ledger finalization on April 16, 2026 produced SHA256
+`d0df0ff0cbc134be142486cb9e93fef65b8f47ae8cdba52cb7b7a164d5782652` with 1,373 records.
+One swap (txid `86db6535ff86393eb657309ed14e12311da32c2f3ee5c0839f4c80653bbb6da8`,
+height 1,783,873, 21,551 XEQM) was excluded due to a database bug where its block
+height was not recorded (height=0) despite having 23,314 confirmations and a valid
+tx proof. The height was corrected from the chain, the ledger was re-finalized to
+include all 1,374 verified swaps, and this document updated accordingly.
