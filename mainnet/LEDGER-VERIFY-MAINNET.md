@@ -8,7 +8,7 @@
 | SHA256 (canonical unredacted ledger) | 042b8be05b1c7af6ea9a0ffab7273e5623d0b7ad8d5a3fd01bb8aab1c3a77087 |
 | Legacy total (atomic) | 2767865413247 |
 | New total (atomic) | 276786541324700000 |
-| Finalized | April 2026 |
+| Finalized | April 16, 2026 |
 
 ## Public ledger
 
