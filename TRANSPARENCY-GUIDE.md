@@ -21,7 +21,7 @@ The spend keys for all wallets involved in the swap are published after the swap
 | **Address** | `Tw1AmWavnFtPT4rgfwt7seYHsLW1vPE7wR8s5BBtu7NZCK31H9jWy6r7m4iZ8APaLDfzGvrgqU9fW3BLjKKiHBw82EntBGmLn` |
 | **View Key** | `d1c95300b1e473d0a4ac6a81adbc42a5fe432de54b5e71c72fae73e668d88701` |
 | **Chain** | Legacy Equilibria (XEQ) — Mainnet |
-| **Spend Key** | Will be published within 72 hours of sweep confirmation — PGP signed to `vellitas/xeq-swap-docs` |
+| **Spend Key** | `67b4883bd1baa7059fcd5282c8b691a73cfd65d466d6fc4ee325682db6d25b0b` — PGP signed release: `mainnet/xeq-deposit-spendkey-release.txt.asc` |
 
 The view key is published here and at swap window open. Any community member can create a view-only wallet and monitor every incoming transaction in real time.
 
@@ -95,13 +95,11 @@ curl -s https://swap.xeqlabs.com/api/public/ledger | python3 -m json.tool
 
 ## 6. Spend Key Release Schedule
 
-After the swap is complete the following keys will be published to this repository as PGP signed statements:
-
 | Wallet | Released | Condition |
 |--------|----------|-----------|
-| Deposit wallet | Within 72 hours | After sweep to community engagement wallet confirmed |
-| Genesis wallet | Within 72 hours | After genesis mint confirmed on-chain |
-| Distribution wallet | Within 24 hours | After last payout confirmed |
+| Deposit wallet | ✅ 2026-04-15 | Sweep to RIP wallet confirmed — see `mainnet/xeq-deposit-spendkey-release.txt.asc` |
+| Genesis wallet | Pending | After genesis mint confirmed on-chain |
+| Distribution wallet | Pending | After last payout confirmed |
 
 All releases are signed with the XEQLabs PGP key — see `pgp/xeqlabs-pgp-public-key.asc` in this repository.
 
