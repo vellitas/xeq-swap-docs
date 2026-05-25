@@ -24,10 +24,33 @@ The unredacted ledger is held offline by the Equilibria core team. The SHA256 ab
 is the hash of the canonical unredacted file. Individual participants may request
 verification of their own swap record by txid.
 
+## Payout proof
+
+`payout-proof.tsv` provides the on-chain proof that every verified swap was paid out
+on the new chain. It contains one row per paid swap:
+
+| Column | Description |
+|--------|-------------|
+| `txid` | Legacy chain deposit transaction ID — links to your record in the canonical ledger |
+| `new_txid` | New chain payout transaction ID — verifiable on the new chain explorer |
+| `new_amount` | Amount paid in new chain atomic units (divide by 1,000,000,000 for XEQ) |
+| `status` | 2 = Paid |
+
+SHA256: `c5e039d1b25a20d9ca79636dec9772f4d6f420310825584d62283862a482a44c`
+
+Note: this file's SHA256 differs from the canonical ledger hash above because `new_txid`
+values were written to the database after ledger finalization, as expected. The `txid`
+column in each row matches exactly the corresponding entry in the canonical ledger.
+
+```bash
+# Verify all 1,374 swaps are present and paid
+awk -F'\t' 'NR>1 && $4==2 {count++} END {print count " paid swaps"}' payout-proof.tsv
+```
+
 ## Verification
 
 ```bash
-# Sum of all new_amount_atomic values in the public ledger should equal 276786541324700000
+# Sum of all new_amount values in the public ledger should equal 276786541324700000
 awk -F'\t' 'NR>1 {sum += $6} END {print sum}' ledger-public.tsv
 ```
 
